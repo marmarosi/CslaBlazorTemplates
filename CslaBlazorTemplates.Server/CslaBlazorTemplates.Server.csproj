@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Csla.AspNetCore" Version="6.0.0-R21120603" />
+    <PackageReference Include="Csla.Blazor" Version="6.0.0-R21120603" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CslaBlazorTemplates.Ui\CslaBlazorTemplates.Ui.csproj" />
   </ItemGroup>
 
