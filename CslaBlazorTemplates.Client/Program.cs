@@ -1,25 +1,37 @@
+using Csla.Configuration;
 using CslaBlazorTemplates.Client.Services;
 using CslaBlazorTemplates.Ui;
 using CslaBlazorTemplates.Ui.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Csla.Configuration;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-builder.Services.AddOptions();
+builder.Services.AddSingleton(new HttpClient
+{
+    BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+});
+//builder.Services.AddScoped(sp =>
+//    new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) }
+//    );
+
 builder.Services.AddAuthorizationCore();
+builder.Services.AddOptions();
 
-builder.Services.AddCsla(options => options
-  .WithBlazorWebAssembly()
-  .DataPortal()
-  .UseHttpProxy(options => options.DataPortalUrl = "/api/DataPortal"));
-
-builder.UseCsla();
-
+builder.Services.AddSingleton<IAppService, AppService>();
 builder.Services.AddSingleton<IForecastService, ForecastService>();
+
+builder.Services.AddCsla(cslaOptions =>
+    cslaOptions
+    .AddBlazorWebAssembly()
+    .DataPortal(dpo =>
+        dpo
+        .UseHttpProxy(proxyOptions =>
+            proxyOptions.DataPortalUrl = "/api/DataPortal"
+            )
+        )
+    );
 
 await builder.Build().RunAsync();
