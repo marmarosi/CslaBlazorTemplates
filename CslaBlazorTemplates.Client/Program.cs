@@ -9,26 +9,21 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.AddSingleton(new HttpClient
-{
-    BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
-});
-//builder.Services.AddScoped(sp =>
-//    new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) }
-//    );
+builder.Services.AddScoped(sp =>
+    new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) }
+    );
 
 builder.Services.AddAuthorizationCore();
 builder.Services.AddOptions();
 
 builder.Services.AddSingleton<IAppService, AppService>();
-builder.Services.AddSingleton<IForecastService, ForecastService>();
+builder.Services.AddScoped<IForecastService, ForecastService>();
 
 builder.Services.AddCsla(cslaOptions =>
     cslaOptions
     .AddBlazorWebAssembly()
     .DataPortal(dpo =>
-        dpo
-        .UseHttpProxy(proxyOptions =>
+        dpo.UseHttpProxy(proxyOptions =>
             proxyOptions.DataPortalUrl = "/api/DataPortal"
             )
         )

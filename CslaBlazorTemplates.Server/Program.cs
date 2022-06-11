@@ -1,7 +1,6 @@
 using Csla.Configuration;
 using CslaBlazorTemplates.Server.Services;
 using CslaBlazorTemplates.Ui.Services;
-using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 string BlazorClientPolicy = "AllowAllOrigins";
@@ -45,14 +44,13 @@ builder.Services.AddCsla(
 //options => options.UseSqlServer("Server=servername;Database=personDB;User ID=sa; Password=pass;Trusted_Connection=True;MultipleActiveResultSets=true"));
 
 builder.Services.AddSingleton<IAppService, AppService>();
-builder.Services.AddSingleton<IForecastService, ForecastService>();
+builder.Services.AddScoped<IForecastService, ForecastService>();
 
 // If using Kestrel:
 builder.Services.Configure<KestrelServerOptions>(options =>
 {
     options.AllowSynchronousIO = true;
 });
-
 // If using IIS:
 builder.Services.Configure<IISServerOptions>(options =>
 {
@@ -61,13 +59,6 @@ builder.Services.Configure<IISServerOptions>(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-//if (!app.Environment.IsDevelopment())
-//{
-//    app.UseExceptionHandler("/Error");
-//    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-//    app.UseHsts();
-//}
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -81,18 +72,13 @@ else
     app.UseHsts();
 }
 
-//app.UseBlazorFrameworkFiles();
 app.UseHttpsRedirection();
-
 app.UseStaticFiles();
 
 app.UseRouting();
 
-//app.MapRazorPages();
-//app.MapControllers();
 app.MapBlazorHub();
+//app.MapControllers();
 app.MapFallbackToPage("/_Host");
-
-app.UseCsla();
 
 app.Run();
