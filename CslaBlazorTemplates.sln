@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CslaBlazorTemplates.Ui", "C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CslaBlazorTemplates.Models", "CslaBlazorTemplates.Models\CslaBlazorTemplates.Models.csproj", "{3381A04C-83BC-42CC-B0DA-3A39F1511C75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CslaBlazorTemplates.Contracts", "CslaBlazorTemplates.Contracts\CslaBlazorTemplates.Contracts.csproj", "{7C19DD15-DBB5-4A79-A64E-9560BA3EE760}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CslaBlazorTemplates.DataAccess", "CslaBlazorTemplates.DataAccess\CslaBlazorTemplates.DataAccess.csproj", "{779A84EB-BF8A-4BA0-9436-371F518D385B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CslaBlazorTemplates.DataAccess.SqlServer", "CslaBlazorTemplates.DataAccess.SqlServer\CslaBlazorTemplates.DataAccess.SqlServer.csproj", "{8444E679-44E8-41F7-AD59-5D5B2C723C13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +37,14 @@ Global
 		{3381A04C-83BC-42CC-B0DA-3A39F1511C75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3381A04C-83BC-42CC-B0DA-3A39F1511C75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3381A04C-83BC-42CC-B0DA-3A39F1511C75}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7C19DD15-DBB5-4A79-A64E-9560BA3EE760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C19DD15-DBB5-4A79-A64E-9560BA3EE760}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C19DD15-DBB5-4A79-A64E-9560BA3EE760}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C19DD15-DBB5-4A79-A64E-9560BA3EE760}.Release|Any CPU.Build.0 = Release|Any CPU
+		{779A84EB-BF8A-4BA0-9436-371F518D385B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{779A84EB-BF8A-4BA0-9436-371F518D385B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{779A84EB-BF8A-4BA0-9436-371F518D385B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{779A84EB-BF8A-4BA0-9436-371F518D385B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8444E679-44E8-41F7-AD59-5D5B2C723C13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8444E679-44E8-41F7-AD59-5D5B2C723C13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8444E679-44E8-41F7-AD59-5D5B2C723C13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8444E679-44E8-41F7-AD59-5D5B2C723C13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

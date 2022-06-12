@@ -2,6 +2,8 @@ using Csla.Configuration;
 using CslaBlazorTemplates.Server.Services;
 using CslaBlazorTemplates.Ui.Services;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
+using CslaBlazorTemplates.DataAccess.SqlServer;
+using Microsoft.EntityFrameworkCore;
 
 string BlazorClientPolicy = "AllowAllOrigins";
 
@@ -40,8 +42,8 @@ builder.Services.AddCsla(
 
 //for EF Db
 //builder.Services.AddTransient(typeof(DataAccess.IPersonDal), typeof(DataAccess.EF.PersonEFDal));
-//builder.Services.AddDbContext<DataAccess.EF.PersonDbContext>(
-//options => options.UseSqlServer("Server=servername;Database=personDB;User ID=sa; Password=pass;Trusted_Connection=True;MultipleActiveResultSets=true"));
+builder.Services.AddDbContext<SqlServerContext>(
+options => options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=CSLA_Models;Trusted_Connection=True;MultipleActiveResultSets=true"));
 
 builder.Services.AddSingleton<IAppService, AppService>();
 builder.Services.AddScoped<IForecastService, ForecastService>();

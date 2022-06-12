@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CslaBlazorTemplates.DataAccess.SqlServer\CslaBlazorTemplates.DataAccess.SqlServer.csproj" />
     <ProjectReference Include="..\CslaBlazorTemplates.Ui\CslaBlazorTemplates.Ui.csproj" />
   </ItemGroup>
 
